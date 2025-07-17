@@ -29,8 +29,6 @@ const AppSchema = new mongoose.Schema({
 const App = mongoose.model('App', AppSchema);
 
 // API Routes
-
-// Get all apps
 app.get('/api/apps', async (req, res) => {
     try {
         const apps = await App.find();
@@ -40,7 +38,6 @@ app.get('/api/apps', async (req, res) => {
     }
 });
 
-// Add new app
 app.post('/api/apps', async (req, res) => {
     const { name, description, bonus, icon, link } = req.body;
     try {
@@ -52,7 +49,6 @@ app.post('/api/apps', async (req, res) => {
     }
 });
 
-// Edit app
 app.put('/api/apps/:id', async (req, res) => {
     const { name, description, bonus, icon, link } = req.body;
     try {
@@ -63,7 +59,6 @@ app.put('/api/apps/:id', async (req, res) => {
     }
 });
 
-// Delete app
 app.delete('/api/apps/:id', async (req, res) => {
     try {
         await App.findByIdAndDelete(req.params.id);
